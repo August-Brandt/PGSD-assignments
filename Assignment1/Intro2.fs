@@ -2,6 +2,8 @@
 
 (* Evaluating simple expressions with variables *)
 
+// If the comment starts with "// *" then we added it
+
 module Intro2
 
 (* Association lists map object language variables to their values *)
@@ -20,6 +22,7 @@ let cvalue = lookup env "c";;
 
 (* Object language expressions with variables *)
 
+// *Added "If" to the language
 type expr = 
   | CstI of int
   | Var of string
@@ -35,6 +38,8 @@ let e3 = Prim("+", Prim("*", Var "b", CstI 9), Var "a");;
 
 (* Evaluation within an environment *)
 
+// *Added "If" to the match case
+// *Revised the Prim case
 let rec eval e (env : (string * int) list) : int =
     match e with
     | CstI i            -> i
@@ -69,7 +74,7 @@ let e2v1 = eval e2 env;;
 let e2v2 = eval e2 [("a", 314)];;
 let e3v  = eval e3 env;;
 
-// ii. New expressions
+// *ii. New expressions
 let e4 = Prim("max", CstI 5, CstI 8)
 let e5 = Prim("min", CstI 5, CstI 8)
 let e6 = Prim("==", CstI 5, CstI 8)
@@ -85,7 +90,7 @@ let e9 = If(CstI 0, CstI 11, CstI 22)
 let eval8 = eval e8 env
 let eval9 = eval e9 env
 
-
+// *We made this
 type aexpr  =
   | Var of string
   | CstI of int
@@ -93,11 +98,12 @@ type aexpr  =
   | Mul of aexpr * aexpr
   | Sub of aexpr * aexpr
 
-// Write the representation of the expressions v − (w + z) and 2 ∗ (v − (w + z)) and x + y + z + v.
+// *Write the representation of the expressions v − (w + z) and 2 ∗ (v − (w + z)) and x + y + z + v.
 let ae1 = Sub(Var "v", (Add(Var "w", Var "z")))
 let ae2 = Mul(CstI 2, Sub(Var "v", (Add(Var "w", Var "z"))))
 let ae3 = Add(Var "x", Add(Var "y", Add(Var "z", Var "v")))
 
+// *We also made this
 let rec fmt aexpr : string = 
     match aexpr with
     | Var x -> x 
@@ -108,7 +114,7 @@ let rec fmt aexpr : string =
 
 let sae = List.map fmt [ae1; ae2; ae3]
 
-
+// *Now this one ... was also made by us
 let rec simplify aexpr = 
     match aexpr with
     | Add(e, CstI 0) -> simplify e
@@ -124,6 +130,7 @@ let rec simplify aexpr =
     | Sub(e1,e2) -> simplify (Sub(simplify e1, simplify e2))
     | _ -> aexpr 
 
+// *Some cool examples also made by us
 let s1 = Add(CstI 0, Var "x")
 let s2 = Sub(Var "x", CstI 0)
 let s3 = Mul(CstI 1, Var "y") 
@@ -132,6 +139,7 @@ let s5 = Mul(Add(CstI 1, CstI 0),Add(Var "x", CstI 0))
 
 let evs1 = List.map simplify [s1; s2; s3; s4; s5]
 
+// *Now here WE did the whole diffeval func. That sh** wild
 let rec diffeval aexpr1 aexpr2 = 
     match aexpr1, aexpr2 with
     | CstI _, Var _ -> CstI 0
@@ -142,7 +150,7 @@ let rec diffeval aexpr1 aexpr2 =
     | Mul(e1, e2), v -> Add(Mul(diffeval e1 v, e2), Mul(diffeval e2 v, e1))
     | _ -> failwith "oops illegal operation straight to jail you are under arrest"
 
-
+// *Just out here making sure it works
 let de2 = diffeval (Var "x") (Var "x")
 let de3 = diffeval (Var "x") (Var "y")
 let de1 = diffeval (CstI 1) (Var "x")
