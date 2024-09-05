@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "XFOmgRXG+WplIPpjWFX4rLGbEdRlLD2lxoi0jIA8bccXqbUX0C7a7dfTWir3pl64BE8qLp6o+MKeL1E2NiV7Ew==",
+  "success": true,
+  "projectFilePath": "/home/august/ITU/5semester/pgsd/PGSD-assignments/Assignment2/HelloLex/hello3.fsproj",
+  "expectedPackageFiles": [
+    "/home/august/.nuget/packages/fsharp.core/8.0.102/fsharp.core.8.0.102.nupkg.sha512"
+  ],
+  "logs": []
+}
