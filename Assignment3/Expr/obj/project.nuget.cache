@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "5ZwIBwerjOuevfzeqB2iXPrLaGxJyIwQqk5teWFc8oQCxXiRrLnnEsxMQLvKvNIz59Sa5Dw2eoB2D2aUwP13aw==",
+  "success": true,
+  "projectFilePath": "/Users/karpe/Documents/ITU/5._Semester/ProgramsAsData/Assignments/PGSD-assignments/Assignment3/Expr/Expr.fsproj",
+  "expectedPackageFiles": [
+    "/Users/karpe/.nuget/packages/fsharp.core/7.0.403/fsharp.core.7.0.403.nupkg.sha512"
+  ],
+  "logs": []
+}
