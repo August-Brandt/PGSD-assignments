@@ -33,4 +33,6 @@ Expr:
   | LET NAME EQ Expr IN Expr END        { Let($2, $4, $6)   }
   | Expr TIMES Expr                     { Prim("*", $1, $3) }
   | Expr PLUS  Expr                     { Prim("+", $1, $3) }  
-  | Expr MINUS Expr                     { Prim("-", 
+  | Expr MINUS Expr                     { Prim("-", $1, $3) } 
+  | IF Expr THEN Expr ELSE Expr         { If($2, $4, $6)    }
+;

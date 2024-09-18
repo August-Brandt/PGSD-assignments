@@ -284,4 +284,38 @@ let _fsyacc_reductions = lazy [|
 # 284 "ExprPar.fs"
         (fun (parseState : FSharp.Text.Parsing.IParseState) ->
             let _2 = parseState.GetInput(2) :?> 'gentype_Expr in
-            let _4 = parseState.GetInput(4) :?> 'gentyp
+            let _4 = parseState.GetInput(4) :?> 'gentype_Expr in
+            let _6 = parseState.GetInput(6) :?> 'gentype_Expr in
+            Microsoft.FSharp.Core.Operators.box
+                (
+                   (
+# 37 "ExprPar.fsy"
+                                                               If(_2, _4, _6)    
+                   )
+# 37 "ExprPar.fsy"
+                 : 'gentype_Expr));
+|]
+# 298 "ExprPar.fs"
+let tables : FSharp.Text.Parsing.Tables<_> = 
+  { reductions = _fsyacc_reductions.Value;
+    endOfInputTag = _fsyacc_endOfInputTag;
+    tagOfToken = tagOfToken;
+    dataOfToken = _fsyacc_dataOfToken; 
+    actionTableElements = _fsyacc_actionTableElements;
+    actionTableRowOffsets = _fsyacc_actionTableRowOffsets;
+    stateToProdIdxsTableElements = _fsyacc_stateToProdIdxsTableElements;
+    stateToProdIdxsTableRowOffsets = _fsyacc_stateToProdIdxsTableRowOffsets;
+    reductionSymbolCounts = _fsyacc_reductionSymbolCounts;
+    immediateActions = _fsyacc_immediateActions;
+    gotos = _fsyacc_gotos;
+    sparseGotoTableRowOffsets = _fsyacc_sparseGotoTableRowOffsets;
+    tagOfErrorTerminal = _fsyacc_tagOfErrorTerminal;
+    parseError = (fun (ctxt:FSharp.Text.Parsing.ParseErrorContext<_>) -> 
+                              match parse_error_rich with 
+                              | Some f -> f ctxt
+                              | None -> parse_error ctxt.Message);
+    numTerminals = 19;
+    productionToNonTerminalTable = _fsyacc_productionToNonTerminalTable  }
+let engine lexer lexbuf startState = tables.Interpret(lexer, lexbuf, startState)
+let Main lexer lexbuf : Absyn.expr =
+    engine lexer lexbuf 0 :?> _

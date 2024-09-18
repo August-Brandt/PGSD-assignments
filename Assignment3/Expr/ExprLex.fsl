@@ -38,4 +38,5 @@ rule Token = parse
   | '('             { LPAR  } 
   | ')'             { RPAR  } 
   | eof             { EOF   }
-  | _  
+  | _               { failwith "Lexer error: illegal symbol" }
+  
