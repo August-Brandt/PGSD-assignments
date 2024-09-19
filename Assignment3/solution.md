@@ -25,3 +25,6 @@ $ dotnet fsi -r ~/Documents/ITU/5._Semester/ProgramsAsData/ProgramsAsDataCodeE20
 
 # 3.6
 You can find this function inside Parse.fs it now also opens Expr as we need the scomp function from there
+
+# 3.7
+Done 
