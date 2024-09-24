@@ -24,8 +24,7 @@ let rec lookup env x =
 
 type value = 
   | Int of int
-  | Closure of string * string * expr * value env 
-  //| Closure of string * string list * expr * value env       (* (f, x, fBody, fDeclEnv) *)
+  | Closure of string * string list * expr * value env       (* (f, x, fBody, fDeclEnv) *)
 
 let rec eval (e : expr) (env : value env) : int =
     match e with 
