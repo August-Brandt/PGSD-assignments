@@ -111,7 +111,7 @@ in
 end
 ```
 
-
+```
 `'a -> 'b`
 ```
 let f x = f x in f end
