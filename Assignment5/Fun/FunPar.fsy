@@ -11,9 +11,9 @@
 %token <string> NAME
 %token <bool> CSTBOOL
 
-%token ELSE END FALSE IF IN LET NOT THEN TRUE
+%token ELSE END FALSE IF IN LET NOT THEN TRUE FUN 
 %token PLUS MINUS TIMES DIV MOD
-%token EQ NE GT LT GE LE
+%token EQ NE GT LT GE LE RARR
 %token LPAR RPAR 
 %token EOF
 
@@ -37,6 +37,7 @@ Main:
 Expr:
     AtExpr                              { $1                     }
   | AppExpr                             { $1                     }
+  | FUN NAME RARR Expr                  { Fun($2, $4)            }
   | IF Expr THEN Expr ELSE Expr         { If($2, $4, $6)         }
   | MINUS Expr                          { Prim("-", CstI 0, $2)  }
   | Expr PLUS  Expr                     { Prim("+",  $1, $3)     }

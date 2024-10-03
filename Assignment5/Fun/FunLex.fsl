@@ -31,6 +31,7 @@ let keyword s =
     | "not"   -> NOT
     | "then"  -> THEN
     | "true"  -> CSTBOOL true
+    | "fun"   -> FUN
     | _       -> NAME s
 }
 
@@ -56,6 +57,7 @@ rule Token = parse
   | '%'             { MOD }
   | '('             { LPAR }
   | ')'             { RPAR }
+  | "->"            { RARR }
   | eof             { EOF }
   | _               { failwith "Lexer error: illegal symbol" }
 

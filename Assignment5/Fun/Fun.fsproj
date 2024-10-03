@@ -17,6 +17,7 @@
     <Compile Include="ParseAndRunHigher.fs" />
     <Compile Include="ParseAndType.fs" />
     <Compile Include="TypeInference.fs" />
+    <Compile Include="merge.fs" />
   </ItemGroup>
 
 </Project>
