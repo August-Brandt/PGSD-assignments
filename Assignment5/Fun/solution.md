@@ -65,32 +65,55 @@ Types to `bool`
 
 `bool -> bool`
 ```
-let f x = if x then x else x in f true end
+let f x = if x then x else x in f end
 ```  
-Types to `bool` = success
+Types to `bool -> bool` = success
 
 `int -> int`
-
 ```
-let f x = x in f 1 end
+let f x = x + x in f end
 ```
-Types to `int` = success
+Types to `int -> int` = success
 
 `int -> int -> int`
-
 ```
 let f x = 
     let g y = x+y 
-    in g 2 end
-in f 4 end
+    in g end
+in f end
 ```
-Types to `int` might be fine idk
+Types to `int -> (int -> int)` = success
 
 `'a -> 'b -> 'a`
-
 ```
 let f x = 
     let g y = x
-    in g true end
-in f 2 end 
+    in g end
+in f end 
 ```
+Type to `'h -> ('g -> 'h)` = success
+
+`'a -> 'b -> 'b`
+```
+let f x =
+    let g y = y
+    in g end
+in f end
+```
+Type to `'g -> ('h -> 'h)` = success
+
+`('a -> 'b) -> ('b -> 'c) -> ('a -> 'c)`
+```
+let f x = f x
+in 
+    let g y = f y
+
+end
+```
+
+
+`'a -> 'b`
+```
+let f x = f x in f end
+```
+Types to `'e -> 'f` = success
