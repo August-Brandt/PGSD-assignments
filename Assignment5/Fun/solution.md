@@ -94,3 +94,49 @@ let f x =
     in g true end
 in f 2 end 
 ```
+
+
+# Proofs
+
+$$ \frac{\frac{}
+{[x \mapsto t_x , f \mapsto t_x \mapsto t_r] \vdash 1 \text{: int}} \quad (P1) \qquad 
+\frac{\frac{P_1 (f) = \forall \alpha , \alpha \rightarrow \text{int}}
+{P_1 \vdash f : [\beta / \alpha] \alpha \rightarrow \text{int} = \beta \rightarrow \text{int}} \quad (P3) \qquad \frac{P_1 (f) = \forall \alpha . \alpha \rightarrow \text{int}}
+{P_1 \vdash f \text{:} [\epsilon / \alpha] \alpha \rightarrow \text{int} = \epsilon \rightarrow \text{int}} \quad (P3) }
+{P_1 = [f\vdash \forall \alpha , \alpha \rightarrow \text{int}] \vdash \text{ff : int}} \quad (P9)}{[] \vdash \text{let } (f x) = 1 \text{ in } ff \text{ end} : \text{int}} \quad (P8) $$
+
+
+$$
+\frac{
+\frac{
+\frac{
+\frac{
+P_1 (x) = \forall \alpha . \alpha = \text {: int}
+}{P_1 \vdash x \text{: int}}  \quad P(3)
+\frac{
+}{10 \text{: int}} \quad (P1)
+}
+{P_1 \vdash x < 10 \text{: bool}} \quad (P5)
+\frac{}{
+42 \text{: int}
+} \quad P(1)
+\frac{
+\frac{
+P_1 (f) = \forall \alpha . \alpha \rightarrow int
+}
+{P_1 \vdash f: [\beta / \alpha] \alpha \rightarrow int = \beta \rightarrow int
+} \quad P(3)
+\frac{
+\frac{P_1 (x) = \forall \alpha . \alpha = int}{P_1 \vdash x \text{: int}} \quad P(3)
+\frac{}{P_1 \vdash 1 \text{: int}} \quad P(1)
+}{P_1 \vdash x + 1 \text{: int}} \quad P(4)
+}{f(x+1) \text{: int}} \quad P(9)
+}
+{P_1 = [x \vdash \text{int}, f \vdash \text{int} \vdash \text{int}] \vdash \text{ if } x < 10 \text{ then } 42 \text{ else } f(x+1) \text{: int} } \quad P(7)
+\frac{
+\frac{P_2 (f) = \forall \alpha . \alpha \rightarrow \text{int}}{P_2 \vdash f : [\beta / \alpha] \alpha \rightarrow \text{int} = \beta \rightarrow \text{int}} \quad P(3)
+\frac{}{P_2 \vdash \text{: int}} \quad P(1)
+}{P_2[f \rightarrow \forall \alpha \text{int} \rightarrow \text{int}] \vdash f 20 \text{: int}} \quad (P9)
+} \quad P(3)
+{[] \vdash \text{let } (f x) = \text{ if } x < 10 \text{ then } 42 \text{ else } f(x+1) \text{ in } f(20) \text{ end} : \text{int}} \quad (P8)
+$$
