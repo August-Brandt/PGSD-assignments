@@ -128,7 +128,7 @@ let f x = f x in let g y = y in f g end end
 ```
 Types to `'h` = success
 
-# Proofs
+# Type rule tree proofs
 
 $$ \frac{\frac{}
 {[x \mapsto t_x , f \mapsto t_x \mapsto t_r] \vdash 1 \text{: int}} \quad (P1) \qquad 
@@ -169,6 +169,15 @@ P_1 (f) = \forall \alpha . \alpha \rightarrow int
 \frac{P_2 (f) = \forall \alpha . \alpha \rightarrow \text{int}}{P_2 \vdash f : [\beta / \alpha] \alpha \rightarrow \text{int} = \beta \rightarrow \text{int}} \quad P(3)
 \frac{}{P_2 \vdash \text{: int}} \quad P(1)
 }{P_2[f \rightarrow \forall \alpha \text{int} \rightarrow \text{int}] \vdash f 20 \text{: int}} \quad (P9)
-} \quad P(3)
+}
 {[] \vdash \text{let } (f x) = \text{ if } x < 10 \text{ then } 42 \text{ else } f(x+1) \text{ in } f(20) \text{ end} : \text{int}} \quad (P8)
 $$
+
+
+## Type rule tree 1:
+`let f x = 1 in f f end`
+![tree1](./imgs/tree1.jpg)
+
+## Type rule tree 2:
+`let f x = if x<10 then 42 else f(x+1) in f 20 end`
+![tree2](./imgs/tree2.jpg)
