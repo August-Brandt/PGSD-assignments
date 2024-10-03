@@ -101,6 +101,12 @@ let rec eval (e : tyexpr) (env : value env) : int =
 
 let rec typ (e : tyexpr) (env : typ env) : typ =
     match e with
+    | ListExpr(exprs, t) -> 
+      match exprs with
+      | x :: e -> 
+        let t1 = typ x env 
+        if t1 = t then typ (ListExpr(e, t)) env else failwith "ListExpr: wrong type in list"
+      | [] -> TypL(t)
     | CstI i -> TypI
     | CstB b -> TypB
     | Var x  -> lookup env x 
@@ -188,3 +194,6 @@ let exErr3 = Letfun("f", "x", TypB, Call(Var "f", CstI 22), TypI,
 
 let exErr4 = Letfun("f", "x", TypB, If(Var "x", CstI 11, CstI 22), TypB,
                     Call(Var "f", CstB true));;
+
+let eList1 = ListExpr([CstI(4); CstI(3); CstI(1)], TypI)
+let eListWrong = ListExpr([CstI(4); CstB(true); CstI(1)], TypI)
