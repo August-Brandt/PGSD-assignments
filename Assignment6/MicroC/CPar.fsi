@@ -26,6 +26,8 @@ type token =
   | TIMES
   | DIV
   | MOD
+  | INC
+  | DEC
   | CHAR
   | ELSE
   | IF
@@ -36,6 +38,7 @@ type token =
   | RETURN
   | VOID
   | WHILE
+  | FOR
   | CSTSTRING of (string)
   | NAME of (string)
   | CSTINT of (int)
@@ -66,6 +69,8 @@ type tokenId =
     | TOKEN_TIMES
     | TOKEN_DIV
     | TOKEN_MOD
+    | TOKEN_INC
+    | TOKEN_DEC
     | TOKEN_CHAR
     | TOKEN_ELSE
     | TOKEN_IF
@@ -76,6 +81,7 @@ type tokenId =
     | TOKEN_RETURN
     | TOKEN_VOID
     | TOKEN_WHILE
+    | TOKEN_FOR
     | TOKEN_CSTSTRING
     | TOKEN_NAME
     | TOKEN_CSTINT
