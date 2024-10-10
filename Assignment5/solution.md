@@ -181,3 +181,10 @@ $$
 ## Type rule tree 2:
 `let f x = if x<10 then 42 else f(x+1) in f 20 end`
 ![tree2](./imgs/tree2.jpg)
+
+
+# Assignment4 stuff:
+The solution for 4.2 can be found in the `ParseAndRun.fs` file.
+
+*In response to:*
+>Looks great!<br>However, please remember to submit what you have done in 4.2 next time. 
