@@ -15,6 +15,7 @@ type typ =
                                                                    
 and expr =                                                         
   | Access of access                 (* x    or  *p    or  a[e]     *)
+  | Ter of expr * expr * expr        (* Ternary operator e.g. e1 ? e2 : e3 *)
   | Assign of access * expr          (* x=e  or  *p=e  or  a[e]=e   *)
   | Addr of access                   (* &x   or  &*p   or  &a[e]    *)
   | CstI of int                      (* Constant                    *)
@@ -23,6 +24,9 @@ and expr =
   | Andalso of expr * expr           (* Sequential and              *)
   | Orelse of expr * expr            (* Sequential or               *)
   | Call of string * expr list       (* Function call f(...)        *)
+  | PreInc of access                 (* C/C++/Java/C# ++i or ++a[e] *)
+  | PreDec of access                 (* C/C--/Java/C# --i or --a[e] *)
+
                                                                    
 and access =                                                       
   | AccVar of string                 (* Variable access        x    *) 
@@ -31,6 +35,8 @@ and access =
                                                                    
 and stmt =                                                         
   | If of expr * stmt * stmt         (* Conditional                 *)
+  | Switch of expr * stmt list
+  | Case of expr * stmt
   | While of expr * stmt             (* While loop                  *)
   | Expr of expr                     (* Expression statement   e;   *)
   | Return of expr option            (* Return from method          *)

@@ -153,6 +153,12 @@ and stmtordec stmtordec locEnv gloEnv store =
 
 and eval e locEnv gloEnv store : int * store = 
   match e with
+    | PreInc acc -> let (loc, store1) = access acc locEnv gloEnv store
+                    let value = (getSto store1 loc) + 1
+                    (value, (setSto store1 loc value))
+    | PreDec acc -> let (loc, store1) = access acc locEnv gloEnv store
+                    let value = (getSto store1 loc) - 1
+                    (value, (setSto store1 loc value))
     | Access acc     -> let (loc, store1) = access acc locEnv gloEnv store
                         (getSto store1 loc, store1) 
     | Assign(acc, e) -> let (loc, store1) = access acc locEnv gloEnv store

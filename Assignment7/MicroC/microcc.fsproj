@@ -13,10 +13,11 @@
     <Compile Include="Parse.fs" />
     <Compile Include="Machine.fs" />
     <Compile Include="Contcomp.fs" />
+    <Compile Include="Comp.fs" />
     <Compile Include="MicroCC.fs" />    
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="/Users/nh/fsharp/FsLexYacc.Runtime.dll" />
+    <Reference Include="/home/august/ITU/5semester/pgsd/ProgramsAsDataCodeE2024/fsharp/FsLexYacc.Runtime.dll" />
   </ItemGroup>
 </Project>

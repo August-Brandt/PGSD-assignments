@@ -1,0 +1,135 @@
+[ ]{0: LDARGS}                  | START
+[ 4 ]{1: CALL 1 5}              | Loaded commandline args (4 on stack)
+[ 4 -999 4 ]{5: INCSP 1}        | New stackframe added from main call with old old bp (-999) and the return address (4)
+[ 4 -999 4 0 ]{7: GETBP}        | Space for new var added to stack
+[ 4 -999 4 0 2 ]{8: CSTI 1}     | bp value put on stack
+[ 4 -999 4 0 2 1 ]{10: ADD}     | 1 put on stack
+[ 4 -999 4 0 3 ]{11: CSTI 0}    | Put on stack the sum of last two elements on stack
+[ 4 -999 4 0 3 0 ]{13: STI}     | 0 put on stack
+[ 4 -999 4 0 0 ]{14: INCSP -1}  | Store top of stack at index top of stack-1, and leave value on stack
+[ 4 -999 4 0 ]{16: GOTO 43}     | Derefernce value left by STI
+[ 4 -999 4 0 ]{43: GETBP}       | Went to code at index 43 in program
+[ 4 -999 4 0 2 ]{44: CSTI 1}    | bp put on stack
+[ 4 -999 4 0 2 1 ]{46: ADD}     | 1 added to stack
+[ 4 -999 4 0 3 ]{47: LDI}       | Put on stack the sum of last two elements on stack
+[ 4 -999 4 0 0 ]{48: GETBP}     | Loaded value at index *sp and put on stack
+[ 4 -999 4 0 0 2 ]{49: CSTI 0}  | Put bp on stack
+[ 4 -999 4 0 0 2 0 ]{51: ADD}   | Put 0 on stack
+[ 4 -999 4 0 0 2 ]{52: LDI}     | Put on stack the sum of last two elements on stack
+[ 4 -999 4 0 0 4 ]{53: LT}      | Loaded value at index *sp and put on stack
+[ 4 -999 4 0 1 ]{54: IFNZRO 18} | Put on stack 0 or 1 for less-than comparison for top elements on stack
+[ 4 -999 4 0 ]{18: GETBP}       | Jumped to index 18 in program code because top element on stack was not 0 (and removed top element)
+[ 4 -999 4 0 2 ]{19: CSTI 1}    | Put bp value on stack
+[ 4 -999 4 0 2 1 ]{21: ADD}     | Put 1 on stack
+[ 4 -999 4 0 3 ]{22: LDI}       | Put on stack the sum of last two elements on stack
+[ 4 -999 4 0 0 ]{23: PRINTI}    | Loaded value at index *sp and put on stack
+0 [ 4 -999 4 0 0 ]{24: INCSP -1}| Printed top of stack :)
+[ 4 -999 4 0 ]{26: GETBP}       | Remove value on on the top of stack
+[ 4 -999 4 0 2 ]{27: CSTI 1}    | Put bp value on stack
+[ 4 -999 4 0 2 1 ]{29: ADD}     | Put 1 on stack
+[ 4 -999 4 0 3 ]{30: GETBP}     | Put on stack the sum of last two elements on stack
+[ 4 -999 4 0 3 2 ]{31: CSTI 1}  | Put bp value on stack 
+[ 4 -999 4 0 3 2 1 ]{33: ADD}   | 1 added to stack
+[ 4 -999 4 0 3 3 ]{34: LDI}     | Put on stack the sum of last two elements on stack
+[ 4 -999 4 0 3 0 ]{35: CSTI 1}  | Loaded value at index *sp and put on stack
+[ 4 -999 4 0 3 0 1 ]{37: ADD}   | Put 1 on stack
+[ 4 -999 4 0 3 1 ]{38: STI}     | Put on stack the sum of last two elements on stack
+[ 4 -999 4 1 1 ]{39: INCSP -1}  | Store top of stack at index top of stack-1, and leave value on stack
+[ 4 -999 4 1 ]{41: INCSP 0}     | Derefernce value left on stack by STI
+[ 4 -999 4 1 ]{43: GETBP}       | Increment sp by 0 (does nothing)
+[ 4 -999 4 1 2 ]{44: CSTI 1}    | Put bp value on stack
+[ 4 -999 4 1 2 1 ]{46: ADD}     | Put 1 on stack
+[ 4 -999 4 1 3 ]{47: LDI}       | Put on stack the sum of last two elements on stack
+[ 4 -999 4 1 1 ]{48: GETBP}     | Put bp value on stack
+[ 4 -999 4 1 1 2 ]{49: CSTI 0}  | Put bp on stack
+[ 4 -999 4 1 1 2 0 ]{51: ADD}   | Put 0 on stack
+[ 4 -999 4 1 1 2 ]{52: LDI}     | Put on stack the sum of last two elements on stack
+[ 4 -999 4 1 1 4 ]{53: LT}      | Loaded value at index *sp and put on stack
+[ 4 -999 4 1 1 ]{54: IFNZRO 18} | Put on stack 0 or 1 for less-than comparison for top elements on stack
+[ 4 -999 4 1 ]{18: GETBP}       | Jumps to address 18
+[ 4 -999 4 1 2 ]{19: CSTI 1}    | Put bp value on stack
+[ 4 -999 4 1 2 1 ]{21: ADD}     | Put 1 on stack
+[ 4 -999 4 1 3 ]{22: LDI}       | Put on stack the sum of last two elements on stack
+[ 4 -999 4 1 1 ]{23: PRINTI}    | Loaded value at index *sp and put on stack
+1 [ 4 -999 4 1 1 ]{24: INCSP -1}| Printed top of stack :)
+[ 4 -999 4 1 ]{26: GETBP}       | Shrink stack
+[ 4 -999 4 1 2 ]{27: CSTI 1}    | Put bp value on stack
+[ 4 -999 4 1 2 1 ]{29: ADD}     | Put 1 on stack
+[ 4 -999 4 1 3 ]{30: GETBP}     | Put on stack the sum of last two elements on stack
+[ 4 -999 4 1 3 2 ]{31: CSTI 1}  | Put bp value on stack
+[ 4 -999 4 1 3 2 1 ]{33: ADD}   | Put 1 on stack
+[ 4 -999 4 1 3 3 ]{34: LDI}     | Put on stack the sum of last two elements on stack
+[ 4 -999 4 1 3 1 ]{35: CSTI 1}  | Loaded value at index *sp and put on stack
+[ 4 -999 4 1 3 1 1 ]{37: ADD}   | Put 1 on stack
+[ 4 -999 4 1 3 2 ]{38: STI}     | Put on stack the sum of last two elements on stack
+[ 4 -999 4 2 2 ]{39: INCSP -1}  | Store top of stack at index top of stack-1, and leave value on stack
+[ 4 -999 4 2 ]{41: INCSP 0}     | Derefernce value left on stack by STI
+[ 4 -999 4 2 ]{43: GETBP}       | Increment sp by 0 (does nothing)
+[ 4 -999 4 2 2 ]{44: CSTI 1}    | Put bp value on stack
+[ 4 -999 4 2 2 1 ]{46: ADD}     | Put 1 on stack
+[ 4 -999 4 2 3 ]{47: LDI}       | Put on stack the sum of last two elements on stack
+[ 4 -999 4 2 2 ]{48: GETBP}     | Loaded value at index *sp and put on stack
+[ 4 -999 4 2 2 2 ]{49: CSTI 0}  | Put bp value on stack
+[ 4 -999 4 2 2 2 0 ]{51: ADD}   | Put 0 on stack 
+[ 4 -999 4 2 2 2 ]{52: LDI}     | Put on stack the sum of last two elements on stack
+[ 4 -999 4 2 2 4 ]{53: LT}      | Loaded value at index *sp and put on stack
+[ 4 -999 4 2 1 ]{54: IFNZRO 18} | Put on stack 0 or 1 for less-than comparison for top elements on stack
+[ 4 -999 4 2 ]{18: GETBP}       | Jumped to index 18 in program code because top element on stack was not 0 (and removed top element)
+[ 4 -999 4 2 2 ]{19: CSTI 1}    | Put bp value on stack
+[ 4 -999 4 2 2 1 ]{21: ADD}     | Put 1 on stack
+[ 4 -999 4 2 3 ]{22: LDI}       | Put on stack the sum of last two elements on stack
+[ 4 -999 4 2 2 ]{23: PRINTI}    | Loaded value at index *sp and put on stack
+2 [ 4 -999 4 2 2 ]{24: INCSP -1}| Printed top of stack :)
+[ 4 -999 4 2 ]{26: GETBP}       | Remove value on on the top of stack
+[ 4 -999 4 2 2 ]{27: CSTI 1}    | Put bp value on stack
+[ 4 -999 4 2 2 1 ]{29: ADD}     | Put 1 on stack
+[ 4 -999 4 2 3 ]{30: GETBP}     | Put on stack the sum of last two elements on stack
+[ 4 -999 4 2 3 2 ]{31: CSTI 1}  | Put bp value on stack
+[ 4 -999 4 2 3 2 1 ]{33: ADD}   | Put 1 onto top of stack
+[ 4 -999 4 2 3 3 ]{34: LDI}     | Put on stack the sum of last two elements on stack
+[ 4 -999 4 2 3 2 ]{35: CSTI 1}  | Loaded value at index *sp and put on stack
+[ 4 -999 4 2 3 2 1 ]{37: ADD}   | Put 1 on stack
+[ 4 -999 4 2 3 3 ]{38: STI}     | Put on stack the sum of last two elements on stack
+[ 4 -999 4 3 3 ]{39: INCSP -1}  | Store top of stack at index top of stack-1, and leave value on stack
+[ 4 -999 4 3 ]{41: INCSP 0}     | Derefernce value left on stack by STI
+[ 4 -999 4 3 ]{43: GETBP}       | Increment sp by 0 (does nothing)
+[ 4 -999 4 3 2 ]{44: CSTI 1}    | Put bp value on stack
+[ 4 -999 4 3 2 1 ]{46: ADD}     | Put 1 on stack
+[ 4 -999 4 3 3 ]{47: LDI}       | Put on stack the sum of last two elements on stack
+[ 4 -999 4 3 3 ]{48: GETBP}     | Loaded value at index *sp and put on stack
+[ 4 -999 4 3 3 2 ]{49: CSTI 0}  | Put bp value on stack
+[ 4 -999 4 3 3 2 0 ]{51: ADD}   | Put 0 on stack
+[ 4 -999 4 3 3 2 ]{52: LDI}     | Put on stack the sum of last two elements on stack
+[ 4 -999 4 3 3 4 ]{53: LT}      | Loaded value at index *sp and put on stack
+[ 4 -999 4 3 1 ]{54: IFNZRO 18} | Put on stack 0 or 1 for less-than comparison for top elements on stack
+[ 4 -999 4 3 ]{18: GETBP}       | Jumped to index 18 in program code because top element on stack was not 0 (and removed top element)
+[ 4 -999 4 3 2 ]{19: CSTI 1}    | Put bp value on stack
+[ 4 -999 4 3 2 1 ]{21: ADD}     | Put 1 on stack
+[ 4 -999 4 3 3 ]{22: LDI}       | Put on stack the sum of last two elements on stack
+[ 4 -999 4 3 3 ]{23: PRINTI}    | Loaded value at index *sp and put on stack
+3 [ 4 -999 4 3 3 ]{24: INCSP -1}| Printed top of stack :)
+[ 4 -999 4 3 ]{26: GETBP}       | Remove value on on the top of stack
+[ 4 -999 4 3 2 ]{27: CSTI 1}    | Put bp value on stack
+[ 4 -999 4 3 2 1 ]{29: ADD}     | Put 1 on stack
+[ 4 -999 4 3 3 ]{30: GETBP}     | Put on stack the sum of last two elements on stack
+[ 4 -999 4 3 3 2 ]{31: CSTI 1}  | Put bp value on stack
+[ 4 -999 4 3 3 2 1 ]{33: ADD}   | Put 1 on stack
+[ 4 -999 4 3 3 3 ]{34: LDI}     | Put on stack the sum of last two elements on stack
+[ 4 -999 4 3 3 3 ]{35: CSTI 1}  | Loaded value at index *sp and put on stack
+[ 4 -999 4 3 3 3 1 ]{37: ADD}   | Put 1 on stack
+[ 4 -999 4 3 3 4 ]{38: STI}     | Put on stack the sum of last two elements on stack
+[ 4 -999 4 4 4 ]{39: INCSP -1}  | Store top of stack at index top of stack-1, and leave value on stack
+[ 4 -999 4 4 ]{41: INCSP 0}     | Derefernce value left on stack by STI
+[ 4 -999 4 4 ]{43: GETBP}       | Increment sp by 0 (does nothing)
+[ 4 -999 4 4 2 ]{44: CSTI 1}    | Put bp value on stack
+[ 4 -999 4 4 2 1 ]{46: ADD}     | Put 1 on stack
+[ 4 -999 4 4 3 ]{47: LDI}       | Put on stack the sum of last two elements on stack
+[ 4 -999 4 4 4 ]{48: GETBP}     | Loaded value at index *sp and put on stack
+[ 4 -999 4 4 4 2 ]{49: CSTI 0}  | Put bp value on stack
+[ 4 -999 4 4 4 2 0 ]{51: ADD}   | Put 0 on stack
+[ 4 -999 4 4 4 2 ]{52: LDI}     | Put on stack the sum of last two elements on stack
+[ 4 -999 4 4 4 4 ]{53: LT}      | Loaded value at index *sp and put on stack
+[ 4 -999 4 4 0 ]{54: IFNZRO 18} | Put on stack 0 or 1 for less-than comparison for top elements on stack 
+[ 4 -999 4 4 ]{56: INCSP -1}    | Jumped to index 18 in program code because top element on stack was not 0 (and removed top element)
+[ 4 -999 4 ]{58: RET 0}         | Return to return address and derefernce local vars
+[ 4 ]{4: STOP}                  | End the program

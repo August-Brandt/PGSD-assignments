@@ -116,6 +116,23 @@ let makeGlobalEnvs (topdecs : topdec list) : varEnv * funEnv * instr list =
 
 let rec cStmt stmt (varEnv : varEnv) (funEnv : funEnv) : instr list = 
     match stmt with
+    | Switch(e, cases) -> 
+      let stopLabel = newLabel()
+      let rec cSwitch cases (varEnv : varEnv) (funEnv : funEnv) (acc : instr list) =
+        match cases with
+        | [] -> acc
+        | case::tail -> 
+          match case with
+          | Case(e, block) -> 
+            match e with
+            | CstI n ->
+              let startLabel = newLabel()
+              let endLabel = newLabel()
+              let acc = acc @ [DUP; CSTI n; EQ; IFNZRO startLabel; GOTO endLabel; Label startLabel] @ cStmt block varEnv funEnv @ [GOTO stopLabel; Label endLabel]
+              cSwitch tail varEnv funEnv acc
+            | _ -> failwith "e is not a CstI"
+          | _ -> failwith "Non case in switch"
+      cSwitch cases varEnv funEnv (cExpr e varEnv funEnv) @ [Label stopLabel; INCSP -1]
     | If(e, stmt1, stmt2) -> 
       let labelse = newLabel()
       let labend  = newLabel()
@@ -164,6 +181,15 @@ and cStmtOrDec stmtOrDec (varEnv : varEnv) (funEnv : funEnv) : varEnv * instr li
 
 and cExpr (e : expr) (varEnv : varEnv) (funEnv : funEnv) : instr list = 
     match e with
+    | PreInc acc -> cAccess acc varEnv funEnv @ [DUP; LDI; CSTI 1; ADD; STI]
+    | PreDec acc -> cAccess acc varEnv funEnv @ [DUP; LDI; CSTI 1; SUB; STI]
+    | Ter(e1, e2, e3) -> 
+      let labelse = newLabel()
+      let labend  = newLabel()
+      cExpr e1 varEnv funEnv @ [IFZERO labelse] 
+      @ cExpr e2 varEnv funEnv @ [GOTO labend]
+      @ [Label labelse] @ cExpr e3 varEnv funEnv
+      @ [Label labend] 
     | Access acc     -> cAccess acc varEnv funEnv @ [LDI] 
     | Assign(acc, e) -> cAccess acc varEnv funEnv @ cExpr e varEnv funEnv @ [STI]
     | CstI i         -> [CSTI i]
