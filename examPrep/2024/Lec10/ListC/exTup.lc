@@ -1,0 +1,20 @@
+void main() {
+    dynamic t1;
+    t1 = tup(32,33,34);
+    printTuple(t1,3); // 32 33 34
+    upd(t1,0,42);
+    printTuple(t1,3); // 42 33 34
+    dynamic t2;
+    t2 = tup(10,11,12,13,14,15);
+    upd(t2,5,42);
+    printTuple(t2,6); // 10 11 12 13 14 42
+}
+
+void printTuple(dynamic t, int n) {
+    int i;
+    i = 0;
+    while (i < n) {
+        print nth(t,i);
+        i = i + 1;
+    }
+}

@@ -1,0 +1,4 @@
+void main() {
+    dynamic t1;
+    t1 = tup(32,33,34);
+}
