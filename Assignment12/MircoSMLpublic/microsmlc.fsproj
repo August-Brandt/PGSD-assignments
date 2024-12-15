@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <RuntimeArguments>--stack-size 8388608</RuntimeArguments> <!-- 8MB stack size -->    
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Util.fs" />
+    <Compile Include="Absyn.fs" />
+    <Compile Include="FunPar.fs" />
+    <Compile Include="FunLex.fs" />
+    <Compile Include="TypeInference.fs" />
+    <Compile Include="HigherFun.fs" />
+    <Compile Include="Machine.fs" />
+    <Compile Include="Contcomp.fs" />
+    <Compile Include="ParseTypeAndRun.fs" />
+    <Compile Include="MicroSMLC.fs" />    
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="/home/august/ITU/5semester/pgsd/ProgramsAsDataCodeE2024/fsharp/FsLexYacc.Runtime.dll" />
+  </ItemGroup>
+</Project>
