@@ -17,6 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="/home/august/ITU/5semster/pgsd/ProgramsAsDataCodeE2024/fsharp/FsLexYacc.Runtime.dll" />
+    <Reference Include="/home/august/ITU/5semester/pgsd/ProgramsAsDataCodeE2024/fsharp/FsLexYacc.Runtime.dll" />
   </ItemGroup>
 </Project>

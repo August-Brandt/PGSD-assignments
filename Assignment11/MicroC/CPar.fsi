@@ -21,6 +21,8 @@ type token =
   | LT
   | GE
   | LE
+  | QM
+  | COLLON
   | PLUS
   | MINUS
   | TIMES
@@ -61,6 +63,8 @@ type tokenId =
     | TOKEN_LT
     | TOKEN_GE
     | TOKEN_LE
+    | TOKEN_QM
+    | TOKEN_COLLON
     | TOKEN_PLUS
     | TOKEN_MINUS
     | TOKEN_TIMES

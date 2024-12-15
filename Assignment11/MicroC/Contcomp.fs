@@ -102,6 +102,21 @@ let rec addCST i C =
     | (_, IFZERO lab :: C1) -> C1
     | (0, IFNZRO lab :: C1) -> C1
     | (_, IFNZRO lab :: C1) -> addGOTO lab C1
+    | (e1, CSTI e2 :: LT :: C1) -> 
+        if e1 < e2 then 
+          addCST 1 C1
+        else  
+          addCST 0 C1
+    | (e1, CSTI e2 :: SWAP :: LT :: C1) -> 
+        if e1 <= e2 then 
+          addCST 0 C1
+        else  
+          addCST 1 C1
+    | (e1, CSTI e2 :: EQ :: C1) ->
+        if e1 <> e2 then
+          addCST 0 C1
+        else
+          addCST 1 C1
     | _                     -> CSTI i :: C
             
 (* ------------------------------------------------------------------- *)
@@ -247,6 +262,10 @@ and bStmtordec stmtOrDec varEnv : bstmtordec * varEnv =
 
 and cExpr (e : expr) (varEnv : varEnv) (funEnv : funEnv) (C : instr list) : instr list =
     match e with
+    | Cond(e1, e2, e3) -> 
+        let (jumpend, C1) = makeJump C
+        let (labelse, C2) = addLabel (cExpr e3 varEnv funEnv C1)
+        cExpr e1 varEnv funEnv (addIFZERO labelse (cExpr e2 varEnv funEnv (addJump jumpend C2)))
     | Access acc     -> cAccess acc varEnv funEnv (LDI :: C)
     | Assign(acc, e) -> cAccess acc varEnv funEnv (cExpr e varEnv funEnv (STI :: C))
     | CstI i         -> addCST i C
