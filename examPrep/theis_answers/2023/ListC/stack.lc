@@ -1,0 +1,4 @@
+void main() {
+    dynamic s;
+    s = createStack(3);
+}
